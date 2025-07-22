@@ -16,59 +16,56 @@
           <label for = "search-input">Search for Creature Name or ID:</label>
           <div id = "search-input-btn">
             <input id = "search-input" type="text" placeholder="Enter Creature Name/ID" required>
-            <button type="submit" id = "search-button"><strong>Search</strong></button>
+            <button type="button" id = "search-button"><strong>Search</strong></button>
           </div>
         </form>
 
         <div id="information-container">
 
-          <div id="creature-name"></div>
-          <div id="creature-id"></div>
-          <div id="weight"></div>
-          <div id="height"></div>
+          <div id="nameIdContainer">
+            <div id="creature-name"></div>
+            <div id="creature-id"></div>
+          </div>
+
+          <div id="weightHeightContainer">
+            <div id="weight"></div>
+            <div id="height"></div>
+          </div>
+
           <div id="types"></div>
+          <div id="specialName"></div>
+          <div id="specialDescription"></div>
 
         </div>
 
-        <div id="stats-container">
+        <div id="stats-container" class="hidden">
 
           <div id="base" class="stats"><strong>Base</strong></div>
           <div id="stats" class="stats"><strong>Stats</strong></div>
 
-          <div id="hp" class="stats">HP:</div>
-          <div id="hpStats" class="stats"></div>
+          <div id="hpName" class="stats">HP:</div>
+          <div id="hp" class="stats"></div>
 
-          <div id="attack" class="stats">Attack:</div>
-          <div id="attackStats" class="stats"></div>
+          <div id="attackName" class="stats">Attack:</div>
+          <div id="attack" class="stats"></div>
 
-          <div id="defense" class="stats">Defense:</div>
-          <div id="defenseStats" class="stats"></div>
+          <div id="defenseName" class="stats">Defense:</div>
+          <div id="defense" class="stats"></div>
 
-          <div id="special-attack" class="stats">Special-attack:</div>
-          <div id="special-attackStats" class="stats"></div>
+          <div id="special-attackName" class="stats">Special-attack:</div>
+          <div id="special-attack" class="stats"></div>
 
-          <div id="special-defense" class="stats">Special-defense:</div>
-          <div id="special-defenseStats" class="stats"></div>
+          <div id="special-defenseName" class="stats">Special-defense:</div>
+          <div id="special-defense" class="stats"></div>
 
-          <div id="speed" class="stats">Speed:</div>
-          <div id="speedStats" class="stats"></div>
+          <div id="speedName" class="stats">Speed:</div>
+          <div id="speed" class="stats"></div>
 
         </div>
 
       </div>
       
     </div>
-
-
-
-
-
-
-
-
-
-
-
     <script src="script.js"></script>
   </body>
   </html>

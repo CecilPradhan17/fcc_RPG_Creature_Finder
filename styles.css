@@ -69,6 +69,8 @@ label{
 }
 
 #information-container{
+  display:flex;
+  flex-direction: column;
   width:400px;
   height:150px;
   background-color:rgb(174, 160, 160);
@@ -85,6 +87,19 @@ label{
   margin-top:40px;
 }
 
+.hidden{
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+  transition: all 0.5s ease;
+  pointer-events: none;
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
 .stats{
   background:maroon;
   padding:15px;
@@ -94,6 +109,96 @@ label{
   border: 1px solid rgb(88, 74, 74);
   font-size:15px;
   height:10px;
-  visibility:hidden;
 }
 
+/* Coloring each type container */
+#fire{
+  background:orange;
+}
+
+#water{
+  background:blue;
+}
+
+#rock{
+  background:rgb(202, 174, 15);
+}
+
+#electric{
+  background:rgb(233, 233, 105);
+}
+
+#dragon{
+  background:rgb(160, 61, 160);
+}
+
+#grass{
+  background:rgb(49, 181, 49);
+}
+
+#poison{
+  background:purple;
+}
+
+#ice{
+  background:lightblue;
+}
+
+#fairy{
+  background:lightpink;
+}
+
+#ground{
+  background:rgb(120, 120, 32);
+}
+
+#flying{
+  background:rgb(206, 226, 233);
+}
+
+#bug{
+  background:rgb(115, 148, 87);
+}
+
+#dark{
+  background:rgb(56, 12, 56);
+}
+
+#psychic{
+  background: rgb(187, 187, 255);
+}
+
+#steel{
+  background:lightgrey;
+}
+
+#ghost{
+  background:rgb(88, 58, 88);
+}
+
+.type {
+  display: inline-block; 
+  width: 100px;
+  height: 20px;
+  text-align:center;
+  border-radius:5px;
+  color:black;
+  border: 1px solid black;
+  margin:5px;
+}
+
+#nameIdContainer,#weightHeightContainer {
+  display: flex;
+  gap: 8px; 
+  margin-left:10px;
+  margin-top:10px;
+}
+
+#creature-name, #creature-id, #weight, #height, #specialName, #specialDescription{
+  color:black;
+}
+
+#specialName, #specialDescription{
+  margin-left:10px;
+  margin-top:5px;
+}
