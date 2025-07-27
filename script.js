@@ -21,7 +21,46 @@ const specialAttack = document.getElementById("special-attack");
 const specialDefense = document.getElementById("special-defense");
 const speed = document.getElementById("speed"); 
 
-const creatureNameOrIdURL = "https://rpg-creature-api.freecodecamp.rocks/api/creatures";
+const base = document.getElementById("base");
+const statsLabel = document.getElementById("stats");
+const hpName = document.getElementById("hpName");
+const attackName = document.getElementById("attackName");
+const defenseName = document.getElementById("defenseName");
+const specialAttackName = document.getElementById("special-attackName");
+const specialDefenseName = document.getElementById("special-defenseName");
+const speedName = document.getElementById("speedName");
+
+//Valid Creature List Container
+const listHeader = document.getElementById("listHeader");
+const validCreatureList = document.getElementById("validCreatureList");
+const table = document.getElementById("table");
+const toggleBtn = document.getElementById("toggleListBtn");
+
+const displayValidCreatureList = async () => 
+{
+  try
+  {
+    const response = await fetch ("https://rpg-creature-api.freecodecamp.rocks/api/creatures");
+    if (!response.ok)
+      throw new error("Network error");
+
+    const data = await response.json();
+    validCreatureList.innerHTML = data.map(data => `<tr><td>${data.id}</td><td>${data.name}</td></tr>`).join("");
+  }
+  catch(error)
+  {
+    console.error("Fetch error", error.message);
+  }
+}
+
+// Toggle the Creature List 
+listHeader.addEventListener( "click", () => 
+  {
+    const isHidden = table.classList.toggle("hidden");
+    toggleBtn.innerHTML = isHidden ? '▼' : '▲';
+  });
+
+displayValidCreatureList();
 
 const updateCreatureInfo = (data) => 
 {
@@ -37,13 +76,23 @@ const updateCreatureInfo = (data) =>
 
 const updateCreatureStats = (data) =>
 {
-  hp.textContent = data.stats[0].base_stat;
-  attack.textContent = data.stats[1].base_stat;
-  defense.textContent = data.stats[2].base_stat;
-  specialAttack.textContent = data.stats[3].base_stat;
-  specialDefense.textContent = data.stats[4].base_stat;
-  speed.textContent = data.stats[5].base_stat;
+  flipAndSetText(hp, data.stats[0].base_stat);
+  flipAndSetText(attack, data.stats[1].base_stat);
+  flipAndSetText(defense, data.stats[2].base_stat);
+  flipAndSetText(specialAttack, data.stats[3].base_stat);
+  flipAndSetText(specialDefense, data.stats[4].base_stat);
+  flipAndSetText(speed, data.stats[5].base_stat);
+
+  flipAndSetText(base, base.textContent);
+  flipAndSetText(statsLabel, statsLabel.textContent);
+  flipAndSetText(hpName, hpName.textContent);
+  flipAndSetText(attackName, attackName.textContent);
+  flipAndSetText(defenseName, defenseName.textContent);
+  flipAndSetText(specialAttackName, specialAttackName.textContent);
+  flipAndSetText(specialDefenseName, specialDefenseName.textContent);
+  flipAndSetText(speedName, speedName.textContent);
 }
+
 
 const updateCreatureCard = async (nameOrId) => 
 {
@@ -66,6 +115,20 @@ const updateCreatureCard = async (nameOrId) =>
   }
 };
 
+// Animation Function 
+const flipAndSetText = (element, value) =>
+{
+  element.classList.add("flip-once");
+  setTimeout(() => {
+    element.textContent = value;
+  }, 500);
+
+  // Remove the class so it can be reused on next update
+  element.addEventListener("animationend", () => {
+    element.classList.remove("flip-once");
+  }, { once: true });
+}
+
 //Execute main functions when search button is clicked
 const searchCreature = async () => 
 {
@@ -81,24 +144,12 @@ const searchCreature = async () =>
   {
     alert("Creature not found");
   }
-searchInput.value = "";
- // ✅ reset animation state
-  statsContainer.classList.remove("show");
-  statsContainer.classList.add("hidden");
-
-  // ✅ force reflow so browser registers class change
-  void statsContainer.offsetWidth;
-
-  // ✅ now trigger animation
-  statsContainer.classList.remove("hidden");
-  statsContainer.classList.add("show");
-};
+  searchInput.value = "";
+}
 
 searchBtn.addEventListener("click",searchCreature);
 searchBar.addEventListener("submit",(e) => 
 {
   e.preventDefault();
   searchCreature();
-  // statsContainer.classList.remove("hidden");
-  // statsContainer.classList.toggle("show");
 });

@@ -10,6 +10,25 @@
     <h1>RPG Creature Searcher</h1>
     <div id = "center-wrapper">
 
+      <div id="validCreatureListContainer">
+        <div id="listHeader">
+          <h3>List of Valid Creatures to look up</h3>
+          <button id="toggleListBtn">▼</button>
+        </div>
+        <table class="hidden" id="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody id="validCreatureList">
+
+          </tbody>
+
+        </table>
+      </div>
+
       <div id = "container">
         
         <form id = "search-bar">
@@ -38,10 +57,10 @@
 
         </div>
 
-        <div id="stats-container" class="hidden">
+        <div id="stats-container" class="stats-container">
 
-          <div id="base" class="stats"><strong>Base</strong></div>
-          <div id="stats" class="stats"><strong>Stats</strong></div>
+          <div id="base" class="stats"><strong>BASE</strong></div>
+          <div id="stats" class="stats"><strong>STATS</strong></div>
 
           <div id="hpName" class="stats">HP:</div>
           <div id="hp" class="stats"></div>

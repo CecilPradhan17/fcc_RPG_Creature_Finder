@@ -10,10 +10,11 @@ h1{
 }
 
 #center-wrapper{
-  display:flex;
-  justify-content: center;
-  
-}
+  display: flex;
+  justify-content: first baseline;
+  gap:100px;
+  align-items: flex-start;
+} 
 
 #container{
   display:flex;
@@ -56,6 +57,7 @@ input::placeholder {
   color:white;
   margin-left:10px;
   box-shadow: 0 5px 5px rgb(66, 63, 63);
+  cursor: pointer;
 }
 
 label{
@@ -87,19 +89,6 @@ label{
   margin-top:40px;
 }
 
-.hidden{
-  opacity: 0;
-  transform: translateY(20px) scale(0.98);
-  transition: all 0.5s ease;
-  pointer-events: none;
-}
-
-.show {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  pointer-events: auto;
-}
-
 .stats{
   background:maroon;
   padding:15px;
@@ -109,6 +98,11 @@ label{
   border: 1px solid rgb(88, 74, 74);
   font-size:15px;
   height:10px;
+  transition: transform 1s;
+}
+
+.flip-once {
+  animation: flip 1s ease-in-out;
 }
 
 /* Coloring each type container */
@@ -201,4 +195,58 @@ label{
 #specialName, #specialDescription{
   margin-left:10px;
   margin-top:5px;
+}
+
+@keyframes flip {
+  0%   { transform: rotateX(0); }
+  50%  { transform: rotateX(90deg); opacity: 0; }
+  51%  { transform: rotateX(90deg); opacity: 0; }
+  100% { transform: rotateX(0); opacity: 1; }
+}
+
+#validCreatureListContainer{
+  background:white;
+  padding-left:10px;
+  padding-right:10px;
+  margin-left:50px;
+  border-radius:10px;
+  color:black;
+  display:inline-flex;
+  flex-direction: column;
+  align-items:center;
+  width:310px;
+}
+
+th,td{
+  background:silver;
+  border-radius:3px;
+  padding:5px;
+  text-align:center;
+}
+
+td{
+  width:1000px;
+}
+
+th{
+  background:grey;
+}
+
+.hidden{
+  display:none;
+}
+
+#toggleListBtn{
+  display:inline-block;
+  margin-left:5px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+h3{
+  display:inline-block;
+}
+
+table{
+  margin-bottom:20px;
 }
